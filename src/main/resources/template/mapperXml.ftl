@@ -5,7 +5,7 @@
         ${columns}
   </sql>
   <select id="getPageByMap" resultType="${packageName}.api.entity.${entityClassName}">
-        select <include refid="Base_Column_List" /> from ${tableName}
+    select <include refid="Base_Column_List" /> from ${tableName}
     <where>
       <if test="create_user != null">
         create_user = ${r"#{create_user}"}
