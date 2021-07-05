@@ -10,6 +10,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,6 +69,33 @@ public class GenCode {
             String mapperXmlFilePath = mapperXmlPath + "/" + entityClassName + "Mapper.xml";
             FreeMarkerUtils.generateFileByFile("mapperXml.ftl",
                     mapperXmlFilePath, webConfiguration, map, true);
+
+            //生成entity
+            String entityPath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/api/entity";
+            Class clz=Class.forName(packageName + ".api.entity." + entityClassName);
+            Field[] fields = clz.getDeclaredFields();
+            List<Map<String, Object>> fieldList = new ArrayList<>();
+            List<String> have = new ArrayList<>();
+            have.add("id");
+            have.add("create_time");
+            have.add("update_time");
+            have.add("create_user");
+            have.add("update_user");
+            for (Field field : fields) {
+                int modifiers = field.getModifiers();
+                String name = field.getName();
+                if (Modifier.isPrivate(modifiers) && !have.contains(name)) {
+                    HashMap<String, Object> fieldMap = new HashMap<>();
+                    String type = field.getType().getSimpleName();
+                    fieldMap.put("type", type);
+                    fieldMap.put("name", name);
+                    fieldList.add(fieldMap);
+                }
+            }
+            map.put("fields", fieldList);
+            String entityFilePath = entityPath + "/" + entityClassName + ".java";
+            FreeMarkerUtils.generateFileByFile("entity.ftl",entityFilePath, webConfiguration, map, true);
+
         }
     }
 }

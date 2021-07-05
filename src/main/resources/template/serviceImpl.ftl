@@ -16,14 +16,9 @@ public class ${entityClassName}ServiceImpl implements ${entityClassName}Service 
 
     @Override
     public void save(${entityClassName} ${entityVarName}) {
-        if (${entityVarName}.getId() == null) {
-            Date now = JodaTimeUtil.now().toDate();
-            ${entityVarName}.setCreate_time(now);
-            ${entityVarName}.setUpdate_time(now);
-            ${entityVarName}Mapper.insert(${entityVarName});
-        }else {
-            update(${entityVarName});
-        }
+        Date now = JodaTimeUtil.now().toDate();
+        ${entityVarName}.setCreate_time(now);
+        ${entityVarName}Mapper.insert(${entityVarName});
     }
 
     @Override

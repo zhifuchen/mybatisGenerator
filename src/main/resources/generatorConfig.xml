@@ -5,36 +5,196 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:\Users\冯磊\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
+            location="E:\apache-maven-framework_512\apache-maven-framework_512\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
     <context id="MysqlTables" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="true"/>
         </commentGenerator>
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.94.129.193:3306/xn?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"
+                        userId="xnw_user"
+                        password="jykd#2019%10&amp;24">
+        </jdbcConnection>-->
+<!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+<!--                        connectionURL="jdbc:mysql://192.168.1.202:3306/secretary?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"-->
+<!--                        userId="dbuser"-->
+<!--                        password="jykd">-->
+<!--        </jdbcConnection>-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/docean?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"
-                        userId="root"
-                        password="root">
+                        connectionURL="jdbc:mysql://110.87.103.58:3306/farmfriend?useUnicode=true&amp;characterEncoding=UTF-8&amp;useTimezone=true&amp;serverTimezone=GMT%2B8"
+                        userId="dbuser"
+                        password="jykd124_45UIY">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--model-->
-        <javaModelGenerator targetPackage="com.wysengine.docean.model" targetProject="src\main\java">
+        <javaModelGenerator targetPackage="com.giantweather.farmfriend.api.entity" targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--mapper.xml-->
-        <sqlMapGenerator targetPackage="com.wysengine.docean.mapper" targetProject="src\main\java">
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--dao接口-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wysengine.docean.dao" targetProject="src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.giantweather.farmfriend.mapper" targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="" value=""/>
         </javaClientGenerator>
 
-        <table schema="docean" tableName="DV_PREDICT_PARAMDATA" domainObjectName="PredictParamdata"
+        <table schema="farmfriend" tableName="land" domainObjectName="Land"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="solar_term" domainObjectName="SolarTerm"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="output" domainObjectName="Output"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="soil_record" domainObjectName="SoilRecord"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop" domainObjectName="Crop"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop_type" domainObjectName="CropType"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="harvest" domainObjectName="Harvest"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop_life_oper_rec" domainObjectName="CropLifeOperRec"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="dict" domainObjectName="Dict"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="farmwork" domainObjectName="Farmwork"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop_life" domainObjectName="CropLife"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop_life_oper" domainObjectName="CropLifeOper"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="disease_forecast" domainObjectName="DiseaseForecast"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="weather_forecast" domainObjectName="WeatherForecast"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="plant_plan" domainObjectName="PlantPlan"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="info" domainObjectName="Info"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="info_attach" domainObjectName="InfoAttach"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="farmwork_type" domainObjectName="FarmworkType"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="soil_detect" domainObjectName="SoilDetect"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop_season" domainObjectName="CropSeason"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="province" domainObjectName="Province"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="city" domainObjectName="City"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="county" domainObjectName="County"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop_life_disease" domainObjectName="CropLifeDisease"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="crop_life_weather" domainObjectName="CropLifeWeather"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table schema="farmfriend" tableName="disease_trend" domainObjectName="DiseaseTrend"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

@@ -16,15 +16,23 @@ import java.util.List;
 @Api(tags = "")
 @RestController
 @RequestMapping("/${entityVarName}")
-public class ${entityClassName}Controller {
+public class ${entityClassName}Controller extends BaseController{
     @DubboReference
     private ${entityClassName}Service ${entityVarName}Service;
 
-    @ApiOperation(value = "保存")
+    @ApiOperation(value = "新增")
     @PostMapping("/save")
     public RestResult save(@RequestBody ${entityClassName} ${entityVarName}) {
-        // TODO: 2021/6/25 025 createuser
+        ${entityVarName}.setCreate_user(getUserId());
         ${entityVarName}Service.save(${entityVarName});
+        return RestResult.ok("成功", ${entityVarName});
+    }
+
+    @ApiOperation(value = "修改")
+    @PostMapping("/update")
+    public RestResult update(@RequestBody ${entityClassName} ${entityVarName}) {
+        ${entityVarName}.setUpdate_user(getUserId());
+        ${entityVarName}Service.update(${entityVarName});
         return RestResult.ok("成功", ${entityVarName});
     }
 
@@ -39,21 +47,22 @@ public class ${entityClassName}Controller {
         ${entityClassName} ${entityVarName} = ${entityVarName}Service.getById(id);
         return RestResult.ok("成功", ${entityVarName});
     }
+    @ApiOperation("获取当前用户的列表-分页")
     @GetMapping("/getPageList")
     public RestResult getPageList(HttpServletRequest request, @RequestParam(defaultValue = "1") int current,
     @RequestParam(defaultValue = "10") int size) {
-        String token = request.getHeader("TOKEN");
-        Integer userId = 1;
-        // TODO: 2021/6/18 018
         Page<${entityClassName}> page = new Page<>(current,size);
         HashMap<String, Object> map = new HashMap<>();
-        map.put("create_user", userId);
+        map.put("create_user", getUserId());
         Page<${entityClassName}> pageList = ${entityVarName}Service.selectPageList(page, map);
         return RestResult.ok("成功", pageList);
     }
+    @ApiOperation("获取当前用户的列表")
     @GetMapping("/getList")
     public RestResult getList(HttpServletRequest request) {
-        List<${entityClassName}> list = ${entityVarName}Service.selectList(null);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("create_user", getUserId());
+        List<${entityClassName}> list = ${entityVarName}Service.selectList(map);
         return RestResult.ok("成功", list);
     }
 }
