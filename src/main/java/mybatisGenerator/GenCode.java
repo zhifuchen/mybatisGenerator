@@ -72,6 +72,7 @@ public class GenCode {
 
             //生成entity
             String entityPath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/api/entity";
+            FileUtils.forceMkdir(new File(entityPath));
             Class clz=Class.forName(packageName + ".api.entity." + entityClassName);
             Field[] fields = clz.getDeclaredFields();
             List<Map<String, Object>> fieldList = new ArrayList<>();
