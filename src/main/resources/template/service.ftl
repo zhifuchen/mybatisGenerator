@@ -9,11 +9,11 @@ import java.util.Map;
 public interface ${entityClassName}Service {
     void save(${entityClassName} ${entityVarName});
 
-    void delete(Long id);
+    void delete(long id);
 
     void update(${entityClassName} ${entityVarName});
 
-    ${entityClassName} getById(Long id);
+    ${entityClassName} getById(long id);
 
     List<${entityClassName}> selectList(Map<String, Object> param);
 

@@ -24,7 +24,7 @@ public class ${entityClassName}ServiceImpl implements ${entityClassName}Service 
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(long id) {
         ${entityVarName}Mapper.deleteById(id);
     }
 
@@ -36,7 +36,7 @@ public class ${entityClassName}ServiceImpl implements ${entityClassName}Service 
     }
 
     @Override
-    public ${entityClassName} getById(Long id) {
+    public ${entityClassName} getById(long id) {
         return ${entityVarName}Mapper.selectById(id);
     }
 
