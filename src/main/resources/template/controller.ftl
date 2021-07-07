@@ -3,7 +3,7 @@ package ${packageName}.controller;
 import com.as.mybatisplus.plugins.Page;
 import ${packageName}.api.entity.${entityClassName};
 import ${packageName}.api.service.${entityClassName}Service;
-import ${packageName}.util.RestResult;
+import com.giantweather.common.util.RestResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -47,6 +47,7 @@ public class ${entityClassName}Controller extends BaseController{
         ${entityClassName} ${entityVarName} = ${entityVarName}Service.getById(id);
         return RestResult.ok("成功", ${entityVarName});
     }
+
     @ApiOperation("获取当前用户的列表-分页")
     @GetMapping("/getPageList")
     public RestResult getPageList(HttpServletRequest request, @RequestParam(defaultValue = "1") int current,
@@ -57,6 +58,16 @@ public class ${entityClassName}Controller extends BaseController{
         Page<${entityClassName}> pageList = ${entityVarName}Service.selectPageList(page, map);
         return RestResult.ok("成功", pageList);
     }
+
+    @ApiOperation("获取所有用户的列表-分页")
+    @GetMapping("/getPageListAll")
+    public RestResult getPageListAll(HttpServletRequest request, @RequestParam(defaultValue = "1") int current,
+    @RequestParam(defaultValue = "10") int size) {
+        Page<${entityClassName}> page = new Page<>(current,size);
+        Page<${entityClassName}> pageList = ${entityVarName}Service.selectPageList(page, null);
+        return RestResult.ok("成功", pageList);
+    }
+
     @ApiOperation("获取当前用户的列表")
     @GetMapping("/getList")
     public RestResult getList(HttpServletRequest request) {

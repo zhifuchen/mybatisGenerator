@@ -4,7 +4,7 @@ import com.as.mybatisplus.plugins.Page;
 import ${packageName}.api.entity.${entityClassName};
 import ${packageName}.api.service.${entityClassName}Service;
 import ${packageName}.mapper.${entityClassName}Mapper;
-import ${packageName}.util.JodaTimeUtil;
+import com.giantweather.common.util.JodaTimeUtil;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
@@ -20,6 +20,7 @@ public class ${entityClassName}ServiceImpl implements ${entityClassName}Service 
     public void save(${entityClassName} ${entityVarName}) {
         Date now = JodaTimeUtil.now().toDate();
         ${entityVarName}.setCreate_time(now);
+        ${entityVarName}.setUpdate_time(now);
         ${entityVarName}Mapper.insert(${entityVarName});
     }
 
