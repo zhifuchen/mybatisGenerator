@@ -20,6 +20,7 @@ public class GenCode {
     public static void main(String[] args) throws Exception {
         String packageName = "com.giantweather.farmfriend";
         String projectRootPath = "E:/zhifu/ideaProject/mybatisGenerator";
+        String srcPath = "/src/main/java/";
         Configuration webConfiguration = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
         webConfiguration.setDirectoryForTemplateLoading(new File(projectRootPath + "/src/main/resources/template"));
         String generatorConfigFile = "/src/main/resources/generatorConfig.xml";
@@ -37,26 +38,26 @@ public class GenCode {
             List<String> columns = MysqlUtil.getColumns(dbConn[0], dbConn[1], dbConn[2], tableName);
             map.put("columns", columns);
             //生成controller
-            String controllerPath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/controller";
+            String controllerPath = projectRootPath + srcPath + packageName.replace(".", "/") + "/controller";
             FileUtils.forceMkdir(new File(controllerPath));
             String controllerFilePath = controllerPath + "/" + entityClassName + "Controller.java";
             FreeMarkerUtils.generateFileByFile("controller.ftl",
                     controllerFilePath, webConfiguration, map, true);
 
             //生成service
-            String servicePath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/api/service";
+            String servicePath = projectRootPath + srcPath + packageName.replace(".", "/") + "/api/service";
             FileUtils.forceMkdir(new File(servicePath));
             String serviceFilePath = servicePath + "/" + entityClassName + "Service.java";
             FreeMarkerUtils.generateFileByFile("service.ftl",
                     serviceFilePath, webConfiguration, map, true);
             //生成serviceImpl
-            String serviceImplPath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/service";
+            String serviceImplPath = projectRootPath + srcPath + packageName.replace(".", "/") + "/service";
             FileUtils.forceMkdir(new File(serviceImplPath));
             String serviceImplFilePath = serviceImplPath + "/" + entityClassName + "ServiceImpl.java";
             FreeMarkerUtils.generateFileByFile("serviceImpl.ftl",
                     serviceImplFilePath, webConfiguration, map, true);
             //生成mapper类
-            String mapperClassPath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/mapper";
+            String mapperClassPath = projectRootPath + srcPath + packageName.replace(".", "/") + "/mapper";
             FileUtils.forceMkdir(new File(mapperClassPath));
             String mapperClassFilePath = mapperClassPath + "/" + entityClassName + "Mapper.java";
             FreeMarkerUtils.generateFileByFile("mapperClass.ftl",
@@ -70,7 +71,7 @@ public class GenCode {
                     mapperXmlFilePath, webConfiguration, map, true);
 
             //生成entity
-            String entityPath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/api/entity";
+            String entityPath = projectRootPath + srcPath + packageName.replace(".", "/") + "/api/entity";
             FileUtils.forceMkdir(new File(entityPath));
             Class clz=Class.forName(packageName + ".api.entity." + entityClassName);
             Field[] fields = clz.getDeclaredFields();
