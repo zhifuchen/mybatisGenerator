@@ -6,11 +6,13 @@ import ${packageName}.api.service.${entityClassName}Service;
 import ${packageName}.mapper.${entityClassName}Mapper;
 import com.giantweather.common.util.JodaTimeUtil;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Service
 @DubboService(protocol = "dubbo")
 public class ${entityClassName}ServiceImpl implements ${entityClassName}Service {
     @Autowired
@@ -44,6 +46,11 @@ public class ${entityClassName}ServiceImpl implements ${entityClassName}Service 
     @Override
     public List<${entityClassName}> selectList(Map<String, Object> param) {
         return ${entityVarName}Mapper.selectByMap(param);
+    }
+
+    @Override
+    public ${entityClassName} selectOne(${entityClassName} ${entityVarName}) {
+        return ${entityVarName}Mapper.selectOne(${entityVarName});
     }
 
     @Override

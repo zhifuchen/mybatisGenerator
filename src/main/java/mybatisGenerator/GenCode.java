@@ -6,7 +6,6 @@ import mybatisGenerator.util.FreeMarkerUtils;
 import mybatisGenerator.util.MysqlUtil;
 import mybatisGenerator.util.XmlUtil;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +35,7 @@ public class GenCode {
             String tableName = String.valueOf(entry.getValue());
             map.put("tableName", tableName);
             List<String> columns = MysqlUtil.getColumns(dbConn[0], dbConn[1], dbConn[2], tableName);
-            map.put("columns", StringUtils.join(columns.toArray(),", "));
+            map.put("columns", columns);
             //生成controller
             String controllerPath = projectRootPath + "/src/main/java/" + packageName.replace(".", "/") + "/controller";
             FileUtils.forceMkdir(new File(controllerPath));

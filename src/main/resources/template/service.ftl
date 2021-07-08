@@ -15,6 +15,8 @@ public interface ${entityClassName}Service {
 
     ${entityClassName} getById(long id);
 
+    ${entityClassName} selectOne(${entityClassName} ${entityVarName});
+
     List<${entityClassName}> selectList(Map<String, Object> param);
 
     Page<${entityClassName}> selectPageList(Page<${entityClassName}> page, Map<String, Object> param);

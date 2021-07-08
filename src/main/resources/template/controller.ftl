@@ -6,7 +6,7 @@ import ${packageName}.api.service.${entityClassName}Service;
 import com.giantweather.common.util.RestResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/${entityVarName}")
 public class ${entityClassName}Controller extends BaseController{
-    @DubboReference
+    @Autowired
     private ${entityClassName}Service ${entityVarName}Service;
 
     @ApiOperation(value = "新增")
