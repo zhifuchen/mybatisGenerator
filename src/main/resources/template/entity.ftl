@@ -7,6 +7,7 @@ import java.util.Date;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.util.List;
+
 @Data
 @TableName("${tableName}")
 public class ${entityClassName} extends BaseEntity {
