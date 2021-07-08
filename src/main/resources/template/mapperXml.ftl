@@ -4,11 +4,12 @@
   <#assign cols = "">
   <#assign cols2 = "">
   <#assign enter = "\r\n    ">
+  <#assign comma = "`, ">
   <#assign tablePrefix = "${tableName?substring(0,1)}">
   <#assign l = 0>
   <#list columns as column>
-    <#assign cols = cols + column + ", ">
-    <#assign cols2 = cols2 + tablePrefix+ "." + column + ", ">
+    <#assign cols = cols + "`" + column + comma>
+    <#assign cols2 = cols2 + tablePrefix+ ".`" + column + comma>
     <#assign l = l + column?length>
     <#if (l > 60)>
       <#assign cols = cols + enter>
@@ -16,12 +17,14 @@
       <#assign l = 0>
     </#if>
   </#list>
+<#--  可能以回车结尾,先移除回车-->
   <#if cols?ends_with(enter)>
     <#assign cols = cols?substring(0,cols?length-enter?length)>
   </#if>
   <#if cols2?ends_with(enter)>
     <#assign cols2 = cols2?substring(0,cols2?length-enter?length)>
   </#if>
+<#--  移除结尾的逗号+空格-->
   <sql id="Base_Column_List">
     ${cols?substring(0,cols?length-2)}
   </sql>
