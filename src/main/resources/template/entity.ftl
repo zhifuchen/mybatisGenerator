@@ -3,10 +3,11 @@ package ${packageName}.api.entity;
 import com.as.mybatisplus.annotations.TableField;
 import com.as.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.Date;
-import lombok.Data;
+import com.giantweather.common.base.BaseEntity;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
+import lombok.Data;
 
 @Data
 @TableName("${tableName}")

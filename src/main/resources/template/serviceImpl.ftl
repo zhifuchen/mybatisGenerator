@@ -5,6 +5,7 @@ import ${packageName}.api.entity.${entityClassName};
 import ${packageName}.api.service.${entityClassName}Service;
 import ${packageName}.mapper.${entityClassName}Mapper;
 import com.giantweather.common.util.JodaTimeUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Service
 @DubboService(protocol = "dubbo")
 public class ${entityClassName}ServiceImpl implements ${entityClassName}Service {

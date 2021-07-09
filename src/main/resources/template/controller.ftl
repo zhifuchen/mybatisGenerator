@@ -3,6 +3,7 @@ package ${packageName}.controller;
 import com.as.mybatisplus.plugins.Page;
 import ${packageName}.api.entity.${entityClassName};
 import ${packageName}.api.service.${entityClassName}Service;
+import com.giantweather.common.base.BaseController;
 import com.giantweather.common.util.RestResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,7 +17,7 @@ import java.util.List;
 @Api(tags = "")
 @RestController
 @RequestMapping("/${entityVarName}")
-public class ${entityClassName}Controller extends BaseController{
+public class ${entityClassName}Controller extends BaseController {
     @Autowired
     private ${entityClassName}Service ${entityVarName}Service;
 
